@@ -25,7 +25,5 @@ for x in leftarray:
     for y in rightarray:
         if int(y) == int(x):
             t+=1
-            sum+=int(x)
-    print(f"{x} x {t}")
-        
+            sum+=int(x)   
 print(sum)   
