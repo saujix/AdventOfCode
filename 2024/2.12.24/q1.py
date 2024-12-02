@@ -7,58 +7,34 @@ with open('input.txt', "r") as file:
         sampleArray[-1] = sampleArray[-1].replace("\n","")
         totalArray.append(sampleArray)
 
-totalLength = len(totalArray)
-i = 0
+def isSafe(array):
+    i = 0
+    while i<len(array)-1:
+        t = int(array[i+1]) - int(array[i])
+        if t<-3 or t>3 or t==0:
+            return False
+        i+=1
 
-unsafe = 0
-safe = 0
-dif=[]
-findif=[]
-pos=0
-neg=0
+def order(array):
+    if array != sorted(array) and array != sorted(array,reverse= True):
+       return False
+    return True
 
-#gets the difference of consecutive elements and appends them to the dif array
-def diffArray(array):
-    j = 0
-    while(j<len(array)-1):
-        dif.append(int(array[j+1])-int(array[j]))
-        j+=1
-    return dif
-
-def checkArray(array):
-    pos=0
-    neg=0
-    for t in array:
-        if t>0:
-            pos+=1
-        elif t<0:
-            neg+=1
-    return pos, neg
-
-def checkunSafe(pos, neg):
-    status_unsafe=0
-    if (pos > 0) != (neg > 0): 
-        for t in dif:
-            if abs(t) not in range(1, 4):
-                status_unsafe +=1
-    return status_unsafe
-
-
-
-
-while(i < len(totalArray)):
-
-    currentArray = totalArray[i]
-    
-    dif = diffArray(currentArray)
-
-    pos=checkArray(dif)[0]
-    neg=checkArray(dif)[1]   
-
-    if checkunSafe(pos,neg)==0:
-        safe+=1
         
-  
-    i+=1
+totalLength=len(totalArray)
+l=0
+safe=0
+inorder = 0
+
+while(l<totalLength):
+    if order(totalArray[l]):
+        inorder+=1
+        if isSafe(totalArray[l])==None:
+            safe+=1
+    l+=1
+    
 print(safe)
-print(unsafe)
+
+
+
+
