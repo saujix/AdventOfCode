@@ -3,8 +3,7 @@ sampleArray=[]
 
 with open('input.txt', "r") as file:
     for line in file:
-        sampleArray = line.split(" ")
-        sampleArray[-1] = sampleArray[-1].replace("\n","")
+        sampleArray = list(map(int, line.strip().split(" ")))  # better to process it this way and cast it directly to ints
         totalArray.append(sampleArray)
 
 def isSafe(array):
@@ -32,9 +31,7 @@ while(l<totalLength):
         if isSafe(totalArray[l])==None:
             safe+=1
     l+=1
-    
+
 print(safe)
-
-
 
 
