@@ -27,7 +27,6 @@ inorder = 0
 
 while(l<totalLength):
     if order(totalArray[l]):
-        inorder+=1
         if isSafe(totalArray[l])==None:
             safe+=1
     l+=1
