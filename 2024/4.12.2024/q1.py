@@ -2,10 +2,9 @@ import re
 
 dataArray=[]
 with open("input.txt", 'r') as file:
-    file = file.read()
-    lines = file.splitlines()
+    lines = file.readlines()
     for line in lines:
-        dataArray.append(line)
+        dataArray.append(line.strip())
 
 count = 0
 
