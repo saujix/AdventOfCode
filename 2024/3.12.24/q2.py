@@ -1,7 +1,6 @@
 import re
 
 multiply = 0
-final=[]
 
 def chunksOp(string):
     sum = 0
@@ -19,6 +18,7 @@ with open('input.txt', 'r') as file:
             x=x[:index]
         multiply+=chunksOp(x)
 
+print(multiply)
 
         
 

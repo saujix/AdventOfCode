@@ -8,5 +8,4 @@ with open('input.txt', 'r') as file:
     for x in match:
         multiply += int(x[0]) * int(x[1])
 
-
-# print(multiply)
+print(multiply)
