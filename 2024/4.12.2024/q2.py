@@ -23,35 +23,13 @@ for y in range(height):
             dL = dataArray[y+1][x-1]
             dR = dataArray[y+1][x+1]
 
-            t=0
-
             if (
-                uL == dL =="M" and
-                uR == dR == "S"
+                (uL == dL =="M" and uR == dR == "S") or
+                (uR == uL == "M" and dL == dR == "S") or
+                (uR == dR == "M" and dL == uL =="S") or
+                (dL == dR =="M" and uR == uL == "S")
             ):
                 count +=1
-                t=1
-
-            if (
-                uR == uL == "M" and
-                dL == dR == "S"
-            ):
-                count+=1
-                t=1
-
-            if (
-                uR == dR == "M" and
-                dL == uL =="S"
-            ):
-                count +=1
-                t=1
-            
-            if (
-                dL == dR =="M" and
-                uR == uL == "S"
-            ):
-                count +=1
-                t = 1
             
 print(count)
 
