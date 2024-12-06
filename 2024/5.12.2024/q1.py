@@ -1,3 +1,4 @@
+# function to input stuff , gives conditions array, cases array
 with open('input.txt', 'r') as file:
     lines = file.readlines()
     cases = []
@@ -16,59 +17,46 @@ with open('input.txt', 'r') as file:
                 caseArray.append(int(case))
             cases.append(caseArray)
 
-# we have conditions array and cases array now
+array = [10, 20, 30, 40, 50]
 
-def splittingList(array, condition):
-    splitted = []
-    constList = []
-    for i in array:
-        if i == condition:
-            splitted.append(constList)
-            constList = []
-        else:
-            constList.append(i)
-    # for last constList as it was never appended
-    if constList:
-        splitted.append(constList)
+# this function finds the last occurence, returns index of last occurence
+def lastOccurence(array, num):
+    for i in range(len(array) - 1, -1, -1):
+        if array[i] == num:
+            return i
+    return None
 
-    return splitted
 
-sample_array = [12, 5, 3, 19, 3, 8, 25, 14, 9, 21]
+actualValid = []
+sum1 = 0
+length = 0
+notNoneIndex = 0
+invalidCounter = 0
+invalidArray = []
 
-print(splittingList(sample_array, 12))
+caseCounter = 0
+for case in cases:
+    caseCounter +=1
+    for index, condition in enumerate(conditions):
 
-def merge_except_last(array):
-    merged = []
-    for x in array[:-1]:
-        merged.extend(x)
+        last_index = lastOccurence(case, condition[0])
 
-    merged.append(array[-1])
+        if last_index is not None:
+            leftPart = case[:last_index]
+            rightPart = case[last_index+1:]
 
-    return merged
+            if (
+                condition[1] in leftPart
+            ):
+                invalid = 1
 
-def conditionTest(case, condition):
-    count = 0
-    
-    blocks = splittingList(case, condition[0])
-    mergedExceptLast = merge_except_last(blocks)
+        if index == len(conditions) - 1:
+            if invalid == 0:
+                sum1 += case[len(case)//2]
+                invalid = 0
+            elif invalid == 1:
+                invalidArray.append(case)
 
-    if len(mergedExceptLast) > 1:
-        # Ensure that mergedExceptLast[1] is an iterable (like a list)
-        if (condition[1] not in [mergedExceptLast[1]] and
-            condition[1] in mergedExceptLast[0]):
-            count += 1
-    
-    if count > 0:
-        return 0
-    else:
-        return 1
 
-valid = 0
-actualValid = 0
-
-# for case in cases:
-#     valid = 0  # Reset valid for each case
-#     for condition in conditions:
-        
-
-# print(actualValid)
+for x in invalidArray:
+    print(x)
