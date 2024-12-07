@@ -9,6 +9,10 @@
 
 ### I do these to learn how to hit my head on wall and dont feel pain, if you know what i mean.
 
+### look this stupid ass grid
+https://github.com/user-attachments/assets/f5038ff7-e7d3-4c11-a7a2-05feadb088dc
+
+
 # what is this, btw
 1. so every year in december, we are given 2 questions each till christmas
 2. no programming language specified
