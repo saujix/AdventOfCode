@@ -1,32 +1,85 @@
-grid= []
-with open("input.txt", "r") as file:
-    for x in file.readlines():
-        grid.append(x.replace("\n",""))
+localLine = []
+dataArray = []
+
+with open('input.txt', 'r') as file:
+    file = file.read()
+    data = file.split("\n")
+    for line in data:
+        localLine = []
+        for word in line:
+            localLine.append(word)
+        dataArray.append(localLine)
+    data = dataArray
+
+
+def getLocation(pointer, data):
+    for col, line in enumerate(data):
+        for row, word in enumerate(line):
+            if word == pointer:
+                return col, row
 
 inGrid = True
 
-def getPosition(grid, word):
-    r = 0
-    c = 0
+directions = {
+    "^": [-1, 0],  # moving up
+    ">": [0, 1],   # moving right
+    "v": [1, 0],   # moving down
+    "<": [0, -1]   # moving left
+}
 
-    for x in grid:
-        for y in x:
-            if y == word:
-                return r, c
-            r+=1
-        c+=1
-        r=0
+def pointerChange(pointer):
+    if pointer == "^":
+        return ">"
+    elif pointer == ">":
+        return "v"
+    elif pointer == "v":
+        return "<"
+    elif pointer == "<":
+        return "^"
 
-x = 0
-y = 0
+
+count = 0
+step = 1
+pointer = "^"
+
+first, last = getLocation(pointer, data)
+
 while inGrid:
-    r, c = getPosition(grid, "^")
-    while grid[c - x][r - y]:
-        print(grid[c - x][r - y])
-        x-=1
-    inGrid = False
+    
+    nextX = first + directions[pointer][0]
+    nextY = last + directions[pointer][1]
 
-# grid[column][row]
+    
+    if nextX < 0 or nextY < 0 or nextX >= len(data) or nextY >= len(data[0]):
+        break
+
+    
+    if data[nextX][nextY] == "#":
+
+        pointer = pointerChange(pointer)  
 
 
 
+    elif data[nextX][nextY] == ".":
+
+        count += 1
+        data[nextX][nextY] = "O"  
+        first, last = nextX, nextY
+    
+    elif data[nextX][nextY] == "O":
+
+        first, last = nextX, nextY  
+
+    
+    if (
+        (first == len(data) - 1 and pointer == "v") or
+        (last == len(data[0]) - 1 and pointer == ">") or
+        (first == 0 and pointer == "^") or
+        (last == 0 and pointer == "<")
+    ):
+        count += 1 # because one step will be the one in which we jump out the grid
+        inGrid = False
+
+for x in data:
+    print(''.join(x))
+print(f"currentSteps : {count}, currentDirection : {pointer}")
