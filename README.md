@@ -7,6 +7,8 @@
 
 ## thanks cs++ for introducing this to me.🤝
 
+### I do these to learn how to hit my head on wall and dont feel pain, if you know what i mean.
+
 # what is this, btw
 1. so every year in december, we are given 2 questions each till christmas
 2. no programming language specified
