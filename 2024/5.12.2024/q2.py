@@ -1,6 +1,5 @@
-def getInvalidArray():
-    # function to input stuff , gives conditions array, cases array
-    with open('input.txt', 'r') as file:
+# this opens the file, return conditions array, return cases array
+with open('input.txt', 'r') as file:
         lines = file.readlines()
         cases = []
         conditions = []
@@ -18,8 +17,8 @@ def getInvalidArray():
                     caseArray.append(int(case))
                 cases.append(caseArray)
 
-    array = [10, 20, 30, 40, 50]
-
+def getInvalidArray():
+    # function to input stuff , gives conditions array, cases array
     # this function finds the last occurence, returns index of last occurence
     def lastOccurence(array, num):
         for i in range(len(array) - 1, -1, -1):
@@ -59,5 +58,26 @@ def getInvalidArray():
                     invalidArray.append(case)
     return invalidArray
 
-for x in getInvalidArray:
-    print(x)
+# PLAN
+# we get a completely sorted array
+# we take unsorted array
+# we iterate throught the unsorted array under the sorted array
+# if we find something we plae it in another array which is gonna be the sorted one
+# we find the middle term
+# we add and print the sum
+
+
+sortedArray = []
+def completelySortedArray():
+    for condition in conditions:
+        
+
+
+
+
+def sortingUnsorted():
+
+
+
+
+
