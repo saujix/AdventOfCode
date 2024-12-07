@@ -1,3 +1,5 @@
+import time
+
 localLine = []
 dataArray = []
 
@@ -79,7 +81,12 @@ while inGrid:
     ):
         count += 1 # because one step will be the one in which we jump out the grid
         inGrid = False
+        
+    time.sleep(0.005)
+    print("\033[H\033[J")
+    for x in data:
+        print(''.join(x))
+    
 
-for x in data:
-    print(''.join(x))
 print(f"currentSteps : {count}, currentDirection : {pointer}")
+
