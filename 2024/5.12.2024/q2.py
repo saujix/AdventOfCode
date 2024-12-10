@@ -65,19 +65,3 @@ def getInvalidArray():
 # if we find something we plae it in another array which is gonna be the sorted one
 # we find the middle term
 # we add and print the sum
-
-
-sortedArray = []
-def completelySortedArray():
-    for condition in conditions:
-        
-
-
-
-
-def sortingUnsorted():
-
-
-
-
-
