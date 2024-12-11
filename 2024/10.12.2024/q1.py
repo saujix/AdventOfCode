@@ -48,7 +48,6 @@ def lookingEverywhere(index, array,visited):
     if (col + 1 < len(array[0]) and array[row][col + 1] - array[row][col] == 1):
         lookingEverywhere((row ,col + 1),array, visited)
 
-    
 for x in zpositions:
     visited = set()
     lookingEverywhere(x, array, visited)
